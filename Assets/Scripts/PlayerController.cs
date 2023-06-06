@@ -2,23 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Puertas.Variables;
+
 
 [SelectionBase]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] GameObject text;
-    private Animator animator;
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
+    [SerializeField] Sprite[] sprites;
+
+    [SerializeField] int initialHP;
+    [SerializeField] IntReference playerHP;
 
     Rigidbody2D rb;
     Vector2 lastDir;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerHP.Value = initialHP;
+        TextManager.Instance.ChangeHp(playerHP.Value);
     }
 
 
@@ -30,6 +35,8 @@ public class PlayerController : MonoBehaviour
         {
             Attack();
         }
+
+        if (Input.GetKeyDown(KeyCode.C)) TakeDamage();
     }
 
     void movePlayer()
@@ -71,6 +78,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = speed * direction;
     }
 
+    //mover esto despues al gameManager
+    void TakeDamage()
+    {
+        playerHP.Value -= 1;
+        
+        TextManager.Instance.ChangeHp(playerHP.Value);
+    }
     void Attack()
     {
         if (hasWeapon)

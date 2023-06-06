@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Puertas.Variables;
 
 public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject CharacterText;
+    [SerializeField] GameObject UiHpText;
     [SerializeField] float textTimer = 2f;
-
     public static TextManager Instance { get; private set; }
 
 
@@ -21,6 +22,11 @@ public class TextManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public void ChangeHp(int value)
+    {
+        UiHpText.GetComponent<Text>().text = $"Player HP: {value}";
     }
 
     public void ShowTextOverCharacter(string _text)
