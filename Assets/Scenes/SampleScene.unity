@@ -4236,7 +4236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  hasWeapon: 0
+  hasWeapon: 1
   hasKey: 0
   sprites: []
   initialHP: 3
@@ -4244,6 +4244,8 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 054b6f51d210ede4ba8ecacb2a7ff92b, type: 2}
+  atkCD: 0.4
+  atkOnCD: 0
 --- !u!212 &1740908789
 SpriteRenderer:
   m_ObjectHideFlags: 0

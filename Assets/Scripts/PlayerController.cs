@@ -12,24 +12,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
     [SerializeField] Sprite[] sprites;
+    Animator animator;
 
     [SerializeField] int initialHP;
     [SerializeField] IntReference playerHP;
 
-    Rigidbody2D rb;
-    Vector2 lastDir;
+    [SerializeField] float atkCD = 0.5f; 
+    [SerializeField] bool atkOnCD = false;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
         playerHP.Value = initialHP;
         TextManager.Instance.ChangeHp(playerHP.Value);
+        animator = GetComponent<Animator>();
+        animator.SetInteger("Direction", 2);
     }
 
 
     private void Update()
     {
-        movePlayer();
+        if(!atkOnCD) movePlayer();
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -41,41 +44,49 @@ public class PlayerController : MonoBehaviour
 
     void movePlayer()
     {
-        /*Vector2 dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        Vector2 dir = Vector2.zero;
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            dir.x = -1;
-            animator.SetInteger("Direction", 3);
+            dir.y = 1;
+            animator.SetInteger("Direction", 0);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             dir.x = 1;
-            animator.SetInteger("Direction", 2);
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            dir.y = 1;
             animator.SetInteger("Direction", 1);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             dir.y = -1;
-            animator.SetInteger("Direction", 0);
+            animator.SetInteger("Direction", 2);
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dir.x = -1;
+            animator.SetInteger("Direction", 3);
         }
 
-        lastDir = dir;
+
+        animator.SetFloat("Horizontal", dir.x);
+        animator.SetFloat("Vertical", dir.y);
+        dir.Normalize();
+        animator.SetBool("isMoving", dir.magnitude > 0);
+        
+
+        GetComponent<Rigidbody2D>().velocity = speed * dir;
+
+        /*lastDir = dir;
         dir.Normalize();
         animator.SetBool("IsMoving", dir.magnitude > 0);
 
-        GetComponent<Rigidbody2D>().velocity = speed * dir;*/
+        GetComponent<Rigidbody2D>().velocity = speed * dir;
 
         rb.velocity = Vector2.zero;
 
         Vector2 direction = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
 
-        rb.velocity = speed * direction;
+        rb.velocity = speed * direction;*/
     }
 
     //mover esto despues al gameManager
@@ -89,12 +100,22 @@ public class PlayerController : MonoBehaviour
     {
         if (hasWeapon)
         {
-            Debug.Log(lastDir);
+            if(!atkOnCD) StartCoroutine(C_Attack());
         }
         else
         {
             TextManager.Instance.ShowTextOverCharacter("No tengo un arma aún");
         }
+    }
+
+    IEnumerator C_Attack()
+    {
+        atkOnCD = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        animator.SetTrigger("isAttacking");
+        yield return new WaitForSeconds(atkCD);
+        atkOnCD = false;
+
     }
 
 
