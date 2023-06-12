@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Puertas.Variables;
-
+using UnityEditor;
 
 [SelectionBase]
 public class PlayerController : MonoBehaviour
@@ -12,26 +12,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
     [SerializeField] Sprite[] sprites;
-    Animator animator;
+    [SerializeField] GameObject sword;
 
     [SerializeField] int initialHP;
     [SerializeField] IntReference playerHP;
 
     [SerializeField] float atkCD = 0.5f; 
     [SerializeField] bool atkOnCD = false;
+    Vector3 swordTarget;
+    Animator animator;
 
     private void Start()
     {
-
         playerHP.Value = initialHP;
         TextManager.Instance.ChangeHp(playerHP.Value);
         animator = GetComponent<Animator>();
         animator.SetInteger("Direction", 2);
+        swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
     }
 
 
     private void Update()
     {
+        CheckPosition();
         if(!atkOnCD) movePlayer();
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -39,7 +42,13 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
+        //dev only
         if (Input.GetKeyDown(KeyCode.C)) TakeDamage();
+    }
+
+    void CheckPosition()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = (int)Mathf.Ceil(Mathf.Abs(transform.position.y - 0.4f) * 10);
     }
 
     void movePlayer()
@@ -49,44 +58,33 @@ public class PlayerController : MonoBehaviour
         {
             dir.y = 1;
             animator.SetInteger("Direction", 0);
+            swordTarget = transform.position + new Vector3(0, 0.5f, 0);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             dir.x = 1;
             animator.SetInteger("Direction", 1);
+            swordTarget = transform.position + new Vector3(0.6f, -0.5f, 0);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             dir.y = -1;
             animator.SetInteger("Direction", 2);
+            swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             dir.x = -1;
             animator.SetInteger("Direction", 3);
+            swordTarget = transform.position + new Vector3(-0.7f,-0.4f, 0);
         }
-
 
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
         dir.Normalize();
         animator.SetBool("isMoving", dir.magnitude > 0);
         
-
         GetComponent<Rigidbody2D>().velocity = speed * dir;
-
-        /*lastDir = dir;
-        dir.Normalize();
-        animator.SetBool("IsMoving", dir.magnitude > 0);
-
-        GetComponent<Rigidbody2D>().velocity = speed * dir;
-
-        rb.velocity = Vector2.zero;
-
-        Vector2 direction = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        direction.Normalize();
-
-        rb.velocity = speed * direction;*/
     }
 
     //mover esto despues al gameManager
@@ -113,9 +111,11 @@ public class PlayerController : MonoBehaviour
         atkOnCD = true;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         animator.SetTrigger("isAttacking");
+        GameObject go = Instantiate(sword, swordTarget, Quaternion.identity);
+        //go.transform.Translate(new Vector3(0.001f, 0, 0));
         yield return new WaitForSeconds(atkCD);
+        Destroy(go);
         atkOnCD = false;
-
     }
 
 
@@ -146,6 +146,13 @@ public class PlayerController : MonoBehaviour
     public void GetWeapon()
     {
         hasWeapon = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 size = new Vector3(2, 1.3f, 0);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(swordTarget, size);
     }
 }
 
