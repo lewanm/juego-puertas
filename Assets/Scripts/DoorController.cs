@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     [SerializeField] GameObject positionTarget;
     [SerializeField] Transform cameraPositionTarget;
     [SerializeField] bool doorIsLocked = false;
-
+    [SerializeField] AudioClip openDoor;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +36,7 @@ public class DoorController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = doorActived;
         player.transform.position = positionTarget.transform.position;
+        SoundManager.Instance.PlaySound(openDoor);
         Camera.main.transform.position = cameraPositionTarget.position;
     }
 

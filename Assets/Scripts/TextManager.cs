@@ -8,6 +8,7 @@ public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject CharacterText;
     [SerializeField] GameObject UiHpText;
+    [SerializeField] GameObject FinalText;
     [SerializeField] float textTimer = 2f;
     public static TextManager Instance { get; private set; }
 
@@ -41,5 +42,10 @@ public class TextManager : MonoBehaviour
         yield return new WaitForSeconds(textTimer);
         CharacterText.SetActive(false);
 
+    }
+
+    public void ChangeFinalText(string text)
+    {
+        FinalText.GetComponent<Text>().text = text;
     }
 }

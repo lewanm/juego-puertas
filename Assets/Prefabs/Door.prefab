@@ -129,3 +129,5 @@ MonoBehaviour:
   doorActived: {fileID: 21300000, guid: 438cc22a75041b044b7880a4c473d564, type: 3}
   positionTarget: {fileID: 0}
   cameraPositionTarget: {fileID: 0}
+  doorIsLocked: 0
+  openDoor: {fileID: 8300000, guid: 1b9f48a4fac5cf647a579da7572a59d7, type: 3}

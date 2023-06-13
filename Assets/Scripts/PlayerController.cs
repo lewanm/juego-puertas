@@ -12,13 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
     [SerializeField] Sprite[] sprites;
-    [SerializeField] GameObject sword;
+    [SerializeField] GameObject swordHitbox;
 
     [SerializeField] int initialHP;
     [SerializeField] IntReference playerHP;
 
     [SerializeField] float atkCD = 0.5f; 
     [SerializeField] bool atkOnCD = false;
+
+    [SerializeField] AudioClip attackSound;
     Vector3 swordTarget;
     Animator animator;
 
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //este metodo es para cambiar el Z y que quede atras del enemigo
         CheckPosition();
         if(!atkOnCD) movePlayer();
 
@@ -109,9 +112,10 @@ public class PlayerController : MonoBehaviour
     IEnumerator C_Attack()
     {
         atkOnCD = true;
+        SoundManager.Instance.PlaySound(attackSound);
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         animator.SetTrigger("isAttacking");
-        GameObject go = Instantiate(sword, swordTarget, Quaternion.identity);
+        GameObject go = Instantiate(swordHitbox, swordTarget, Quaternion.identity);
         //go.transform.Translate(new Vector3(0.001f, 0, 0));
         yield return new WaitForSeconds(atkCD);
         Destroy(go);
@@ -130,14 +134,24 @@ public class PlayerController : MonoBehaviour
         {
             collision.GetComponent<ItemsController>().Action(gameObject);
         }
-    }
 
+        if (collision.gameObject.CompareTag("Testing"))
+        {
+            TextManager.Instance.ChangeFinalText("El prototipo termina hasta este punto, y esta son algunas cosas que vamos a agregar. Monstruos con sus respectivos ataques, y un jefe final. ");
+        }
+    }
     public void GetKey()
     {
         hasKey = true;
         //Ver si crear otro texto arriba en la UI en vez de arriba del player.
         TextManager.Instance.ShowTextOverCharacter("Obtuve una llave...");
     }
+
+    public void DropKey()
+    {
+        hasKey = true;
+    }
+
     public bool HasKey()
     {
         return hasKey;
