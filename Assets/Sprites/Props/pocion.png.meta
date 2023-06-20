@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eda548a86b4a9e4285eb76b4dc9bd25
+guid: 95ed1cf8a05e1084ba459db27c5b5103
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tutorial_0
+      name: pocion_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 217
-        width: 120
-        height: 120
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39c079d35f4badd42a3d87311fe7aedc
-      internalID: 615175337
+      spriteID: ec1e5acbd0cd0c747b3f09e3c9f3194e
+      internalID: 204028660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tutorial_1
+      name: pocion_1
       rect:
         serializedVersion: 2
-        x: 376
-        y: 217
-        width: 200
-        height: 120
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11b01aeecf7742f4d9b81a28154e5f80
-      internalID: 1914964513
+      spriteID: 72bd211d0d917a24285faa11ddbe318f
+      internalID: 1508360596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tutorial_2
+      name: pocion_2
       rect:
         serializedVersion: 2
-        x: 581
-        y: 217
-        width: 168
-        height: 120
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c66072b8506f724a80967f989996bd0
-      internalID: -1836204737
+      spriteID: eda58812f2cba30498e113ca2224fe24
+      internalID: 1249334926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pocion_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9fe39073d72ee40824423edcb192ef
+      internalID: 1926326518
       vertices: []
       indices: 
       edges: []
@@ -190,9 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tutorial_0: 615175337
-      tutorial_1: 1914964513
-      tutorial_2: -1836204737
+      pocion_0: 204028660
+      pocion_1: 1508360596
+      pocion_2: 1249334926
+      pocion_3: 1926326518
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

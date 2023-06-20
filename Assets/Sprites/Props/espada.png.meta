@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eda548a86b4a9e4285eb76b4dc9bd25
+guid: 0f99fca6322e4e74fa5166e7c20f1f18
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tutorial_0
+      name: espada_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 217
-        width: 120
-        height: 120
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39c079d35f4badd42a3d87311fe7aedc
-      internalID: 615175337
+      spriteID: 0c9671e2e1c6db045b142d7f69feae70
+      internalID: -1979813823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tutorial_1
+      name: espada_1
       rect:
         serializedVersion: 2
-        x: 376
-        y: 217
-        width: 200
-        height: 120
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,29 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11b01aeecf7742f4d9b81a28154e5f80
-      internalID: 1914964513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tutorial_2
-      rect:
-        serializedVersion: 2
-        x: 581
-        y: 217
-        width: 168
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c66072b8506f724a80967f989996bd0
-      internalID: -1836204737
+      spriteID: 91400c22fd1def14cad5d7e8dcc47bc2
+      internalID: 1990272811
       vertices: []
       indices: 
       edges: []
@@ -190,9 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tutorial_0: 615175337
-      tutorial_1: 1914964513
-      tutorial_2: -1836204737
+      espada_0: -1979813823
+      espada_1: 1990272811
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

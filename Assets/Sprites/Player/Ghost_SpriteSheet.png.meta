@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eda548a86b4a9e4285eb76b4dc9bd25
+guid: 9d1d3e3c73ec11b409621b2cd71b9de7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tutorial_0
+      name: Ghost_SpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 217
-        width: 120
-        height: 120
+        x: 21
+        y: 104
+        width: 38
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39c079d35f4badd42a3d87311fe7aedc
-      internalID: 615175337
+      spriteID: 571d1b054e91bdc418fbc66fd31002da
+      internalID: 1675351405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tutorial_1
+      name: Ghost_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 376
-        y: 217
-        width: 200
-        height: 120
+        x: 86
+        y: 104
+        width: 36
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11b01aeecf7742f4d9b81a28154e5f80
-      internalID: 1914964513
+      spriteID: 2236c6e72e175ee43a8a47eba15f994a
+      internalID: -1744062331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tutorial_2
+      name: Ghost_SpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 581
-        y: 217
-        width: 168
-        height: 120
+        x: 148
+        y: 102
+        width: 37
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c66072b8506f724a80967f989996bd0
-      internalID: -1836204737
+      spriteID: 61ff1b7671015fd48a588fe97d81fb3f
+      internalID: -2018424850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 20
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a062d0076326543860d8de1a7878a1
+      internalID: 1049508944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 20
+        width: 36
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a55c21c77a72e64ba99cd89aeabe8db
+      internalID: -1154649125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 18
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7ef2ede9852264d984eea96ed71b0b
+      internalID: -2004527760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 18
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1fb291935d0ad4ab8905b88c8a99e1
+      internalID: 184071242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 20
+        width: 36
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73eabac231bd176449ea0f72a2d0a504
+      internalID: 1209632470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghost_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 20
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6a883ba5184c243b0be32084635245
+      internalID: -1607514555
       vertices: []
       indices: 
       edges: []
@@ -190,9 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tutorial_0: 615175337
-      tutorial_1: 1914964513
-      tutorial_2: -1836204737
+      Ghost_SpriteSheet_0: 1675351405
+      Ghost_SpriteSheet_1: -1744062331
+      Ghost_SpriteSheet_2: -2018424850
+      Ghost_SpriteSheet_3: 1049508944
+      Ghost_SpriteSheet_4: -1154649125
+      Ghost_SpriteSheet_5: -2004527760
+      Ghost_SpriteSheet_6: 184071242
+      Ghost_SpriteSheet_7: 1209632470
+      Ghost_SpriteSheet_8: -1607514555
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

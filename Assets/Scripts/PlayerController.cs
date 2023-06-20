@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
+    [SerializeField] bool isDark = false;
     [SerializeField] Sprite[] sprites;
     [SerializeField] GameObject swordHitbox;
 
@@ -45,10 +46,17 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
 
+        CheckLight();
+
         //dev only
         if (Input.GetKeyDown(KeyCode.C)) TakeDamage();
     }
+    void CheckLight()
+    {
+        if (!isDark) animator.SetFloat("isDark", 0f);
+        else animator.SetFloat("isDark", 1f);
 
+    }
     void CheckPosition()
     {
         GetComponent<SpriteRenderer>().sortingOrder = (int)Mathf.Ceil(Mathf.Abs(transform.position.y - 0.4f) * 10);
