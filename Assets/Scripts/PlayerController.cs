@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int initialHP;
     [SerializeField] IntReference playerHP;
 
-    [SerializeField] float atkCD = 0.5f; 
+    [SerializeField] float atkCD = 0.55f;
     [SerializeField] bool atkOnCD = false;
 
     [SerializeField] AudioClip attackSound;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         playerHP.Value = initialHP;
         TextManager.Instance.ChangeHp(playerHP.Value);
         animator = GetComponent<Animator>();
-        animator.SetInteger("Direction", 2);
+        animator.SetFloat("Direction", 2f);
         swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
     }
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         //este metodo es para cambiar el Z y que quede atras del enemigo
         CheckPosition();
-        if(!atkOnCD) movePlayer();
+        if (!atkOnCD) movePlayer();
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -68,33 +68,33 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             dir.y = 1;
-            animator.SetInteger("Direction", 0);
+            animator.SetFloat("Direction", 0);
             swordTarget = transform.position + new Vector3(0, 0.5f, 0);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             dir.x = 1;
-            animator.SetInteger("Direction", 1);
+            animator.SetFloat("Direction", 1);
             swordTarget = transform.position + new Vector3(0.6f, -0.5f, 0);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             dir.y = -1;
-            animator.SetInteger("Direction", 2);
+            animator.SetFloat("Direction", 2);
             swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             dir.x = -1;
-            animator.SetInteger("Direction", 3);
-            swordTarget = transform.position + new Vector3(-0.7f,-0.4f, 0);
+            animator.SetFloat("Direction", 3);
+            swordTarget = transform.position + new Vector3(-0.7f, -0.4f, 0);
         }
 
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
         dir.Normalize();
         animator.SetBool("isMoving", dir.magnitude > 0);
-        
+
         GetComponent<Rigidbody2D>().velocity = speed * dir;
     }
 
@@ -102,16 +102,17 @@ public class PlayerController : MonoBehaviour
     void TakeDamage()
     {
         playerHP.Value -= 1;
-        
+
         TextManager.Instance.ChangeHp(playerHP.Value);
     }
     void Attack()
     {
-        if (hasWeapon)
+        if (hasWeapon && !isDark)
         {
-            if(!atkOnCD) StartCoroutine(C_Attack());
+            if (!atkOnCD) StartCoroutine(C_Attack());
         }
-        else
+        
+        if (!hasWeapon)
         {
             TextManager.Instance.ShowTextOverCharacter("No tengo un arma aún");
         }
@@ -177,4 +178,3 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireCube(swordTarget, size);
     }
 }
-
