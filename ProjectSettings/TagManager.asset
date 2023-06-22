@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - Weapon
   - Testing
+  - Chest
   layers:
   - Default
   - TransparentFX

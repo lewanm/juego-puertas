@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool hasWeapon = false;
     [SerializeField] bool hasKey = false;
     [SerializeField] bool isDark = false;
-    [SerializeField] Sprite[] sprites;
     [SerializeField] GameObject swordHitbox;
 
     [SerializeField] int initialHP;
@@ -124,8 +123,19 @@ public class PlayerController : MonoBehaviour
         SoundManager.Instance.PlaySound(attackSound);
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         animator.SetTrigger("isAttacking");
-        GameObject go = Instantiate(swordHitbox, swordTarget, Quaternion.identity);
-        //go.transform.Translate(new Vector3(0.001f, 0, 0));
+        GameObject go = Instantiate(swordHitbox, transform.position + Vector3.up, Quaternion.identity);
+        yield return new WaitForSeconds(atkCD);
+        Destroy(go);
+        atkOnCD = false;
+    }
+
+    IEnumerator C_GetItem(GameObject item)
+    {
+        atkOnCD = true;
+        //SoundManager.Instance.PlaySound(attackSound);
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        animator.SetTrigger("GetItem");
+        GameObject go = Instantiate(item, swordTarget, Quaternion.identity);
         yield return new WaitForSeconds(atkCD);
         Destroy(go);
         atkOnCD = false;
@@ -137,6 +147,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Door"))
         {
             collision.GetComponent<DoorController>().Action(gameObject);
+        }
+
+        if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Chest"))
+        {
+            collision.GetComponent<ChestController>().Action(gameObject);
         }
 
         if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Item"))
@@ -165,7 +180,10 @@ public class PlayerController : MonoBehaviour
     {
         return hasKey;
     }
-
+    public void GetItem(GameObject item)
+    {
+        C_GetItem(item);
+    }
     public void GetWeapon()
     {
         hasWeapon = true;

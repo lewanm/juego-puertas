@@ -211,8 +211,8 @@ Transform:
   m_GameObject: {fileID: 1072538949431781231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.08, y: -2.46, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1072538947785970320}
   m_Father: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   speed: 3
   hasWeapon: 0
   hasKey: 0
-  sprites: []
+  isDark: 0
   swordHitbox: {fileID: 2663762297506044522, guid: c0d2b4a9a803d1f4b9e250c49993933a,
     type: 3}
   initialHP: 3
@@ -330,18 +330,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4864594}
+  m_Offset: {x: 0.008902311, y: -0.2146759}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.515625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8125, y: 0.3395812}
+  m_Size: {x: 0.3660202, y: 0.08830845}
   m_EdgeRadius: 0
 --- !u!95 &1072538949431781221
 Animator:
