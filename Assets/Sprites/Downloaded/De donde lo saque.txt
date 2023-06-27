@@ -1,1 +1,10 @@
+PlaceholderAssets
 https://game-endeavor.itch.io/mystic-woods
+
+
+Tiles from:
+https://opengameart.org/content/lpc-interior-castle-tiles
+https://penzilla.itch.io/top-down-retro-house
+
+SPIKES:
+https://stealthix.itch.io/animated-traps

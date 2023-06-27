@@ -10,6 +10,10 @@ TagManager:
   - Weapon
   - Testing
   - Chest
+  - Snake
+  - ExitDoor
+  - Enemy
+  - Traps
   layers:
   - Default
   - TransparentFX
@@ -20,8 +24,8 @@ TagManager:
   - Items
   - Weapon
   - Monster
-  - 
-  - 
+  - GODMOD
+  - Trap
   - 
   - 
   - 
