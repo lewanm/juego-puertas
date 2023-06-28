@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 621857110886106067}
   - component: {fileID: -188875515517453935}
   m_Layer: 10
-  m_Name: SpikeHitbox
+  m_Name: SpiderAttackHitbox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

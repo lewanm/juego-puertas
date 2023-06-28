@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool hasKey = false;
     [SerializeField] bool isDark = false;
     [SerializeField] bool hasTorch = false;
+    [SerializeField] bool startFromStartPosition = false;
     [SerializeField] GameObject swordHitbox;
 
+    Vector3 startPosition;
     [SerializeField] int initialHP;
     [SerializeField] IntReference playerHP;
     [SerializeField] FloatReference playerY;
@@ -41,6 +43,9 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Direction", 2f);
         swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
         mascara = transform.GetChild(0);
+        startPosition = new Vector3(0,-3,0);
+
+        if (startFromStartPosition) transform.position = startPosition;
 
         if (Input.GetKey(KeyCode.C))
         {
@@ -162,13 +167,22 @@ public class PlayerController : MonoBehaviour
         atkOnCD = false;
     }
 
+    bool PressedActionButton()
+    {
+        return Input.GetKey(KeyCode.X);
+    }
 
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Door"))
+        if (PressedActionButton() && collision.gameObject.CompareTag("Door"))
         {
             collision.GetComponent<DoorController>().Action(gameObject);
+        }
+
+        if (PressedActionButton() && collision.gameObject.CompareTag("spiderweb"))
+        {
+            collision.GetComponent<SpiderwebController>().Burn();
         }
 
         if (collision.gameObject.CompareTag("ExitDoor"))
@@ -176,12 +190,12 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<DoorController>().Action(gameObject);
         }
 
-        if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Chest"))
+        if (PressedActionButton() && collision.gameObject.CompareTag("Chest"))
         {
             collision.GetComponent<ChestController>().Action(gameObject);
         }
 
-        if (Input.GetKey(KeyCode.X) && collision.gameObject.CompareTag("Item"))
+        if (PressedActionButton() && collision.gameObject.CompareTag("Item"))
         {
             collision.GetComponent<ItemsController>().Action(gameObject);
         }

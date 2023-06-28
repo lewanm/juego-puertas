@@ -14,6 +14,7 @@ TagManager:
   - ExitDoor
   - Enemy
   - Traps
+  - spiderweb
   layers:
   - Default
   - TransparentFX
