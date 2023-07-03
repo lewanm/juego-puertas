@@ -18,10 +18,16 @@ public class SpiderwebController : MonoBehaviour
         
     }
 
-    public void Burn()
+    public void Burn(GameObject player)
     {
-        StartCoroutine(BurnAnimation());
+        if (!player.GetComponent<PlayerController>().HasTorch())
+        {
+            TextManager.Instance.ShowTextOverCharacter("Necesito fuego para quemar esto");
+            return;
+        }
 
+        StartCoroutine(BurnAnimation());
+        
     }
 
     IEnumerator BurnAnimation()
@@ -29,5 +35,6 @@ public class SpiderwebController : MonoBehaviour
         anim.SetTrigger("Burn");
         yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);
+
     }
 }

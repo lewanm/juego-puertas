@@ -9,6 +9,7 @@ public class TextManager : MonoBehaviour
     [SerializeField] GameObject CharacterText;
     [SerializeField] GameObject UiHpText;
     [SerializeField] GameObject FinalText;
+    [SerializeField] IntReference playerHp;
     [SerializeField] float textTimer = 2f;
     public static TextManager Instance { get; private set; }
 
@@ -25,7 +26,12 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    public void ChangeHp(int value)
+    private void Update()
+    {
+        UpdateHp(playerHp.Value);
+    }
+
+    public void UpdateHp(int value)
     {
         UiHpText.GetComponent<Text>().text = $"Player HP: {value}";
     }

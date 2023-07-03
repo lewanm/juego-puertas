@@ -101,11 +101,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixel-art-hit-point-heart-260nw-721682875-removebg-preview_0
+      name: FullHeart
       rect:
         serializedVersion: 2
         x: 0
@@ -113,7 +125,7 @@ TextureImporter:
         width: 294
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel-art-hit-point-heart-260nw-721682875-removebg-preview_2
+      name: EmptyHeart
       rect:
         serializedVersion: 2
         x: 698
@@ -134,7 +146,7 @@ TextureImporter:
         width: 293
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel-art-hit-point-heart-260nw-721682875-removebg-preview_1
+      name: HalfHeart
       rect:
         serializedVersion: 2
         x: 349
@@ -155,7 +167,7 @@ TextureImporter:
         width: 294
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixel-art-hit-point-heart-260nw-721682875-removebg-preview_0: -1669938266
-      pixel-art-hit-point-heart-260nw-721682875-removebg-preview_1: -548529110
-      pixel-art-hit-point-heart-260nw-721682875-removebg-preview_2: -1802219544
+      EmptyHeart: -1802219544
+      FullHeart: -1669938266
+      HalfHeart: -548529110
       pixel-art-hit-point-heart-260nw-721682875-removebg-preview_3: -986538291
       pixel-art-hit-point-heart-260nw-721682875-removebg-preview_4: 287196028
   spritePackingTag: 

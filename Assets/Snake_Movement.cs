@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Snake_Movement : StateMachineBehaviour
 {
-    [SerializeField] float speed = 2.5f;
-    [SerializeField] float attackRange = 1f;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float attackRange = 1.8f;
     Transform player;
     Rigidbody2D rb;
     SnakeController snake;

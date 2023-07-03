@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: bc496dc762f7c62429ff439574a8b618, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6eb8f98ae78d1c142bc597a805923995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.78, y: 0.96}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,7 +104,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.78, y: 0.96}
+    newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a5f13ef901f6543847294581358b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 21300000, guid: bc496dc762f7c62429ff439574a8b618, type: 3}
-  doorHovered: {fileID: 21300000, guid: 3868cfb1a5ca784439a53fcd5ca542f1, type: 3}
+  door: {fileID: 21300000, guid: 6eb8f98ae78d1c142bc597a805923995, type: 3}
+  doorHovered: {fileID: 21300000, guid: ac12a1bfd23899041a72860cf16db0e6, type: 3}
   doorActived: {fileID: 21300000, guid: 438cc22a75041b044b7880a4c473d564, type: 3}
   positionTarget: {fileID: 0}
   cameraPositionTarget: {fileID: 0}

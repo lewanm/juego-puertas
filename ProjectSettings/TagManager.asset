@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - Traps
   - spiderweb
+  - fireplace
   layers:
   - Default
   - TransparentFX

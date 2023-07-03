@@ -1,6 +1,4 @@
 using Puertas.Variables;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
@@ -19,7 +17,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && canTheDoorBeOpen(collision.gameObject))
+        if (collision.gameObject.CompareTag("Player") && CanTheDoorBeOpen(collision.gameObject))
         {
             GetComponent<SpriteRenderer>().sprite = doorHovered;
         }
@@ -33,7 +31,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    bool canTheDoorBeOpen(GameObject player)
+    bool CanTheDoorBeOpen(GameObject player)
     {
         return (
             !doorIsLocked || 
@@ -51,14 +49,12 @@ public class DoorController : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = doorActived;
         SoundManager.Instance.PlaySound(openDoor);
 
-        if (nextRoomHaveTraps) ManagerGame.Instance.TurnOnSpikes();
-        else ManagerGame.Instance.TurnOffSpikes();
-
+        ManagerGame.Instance.SwitchSpikesState(nextRoomHaveTraps);
     }
 
     public void Action(GameObject player)
     {
-        if (canTheDoorBeOpen(player)) OpenDoor(player);
+        if (CanTheDoorBeOpen(player)) OpenDoor(player);
         if (killCount.Value < killedEnemiesToBeOpen && killedEnemiesToBeOpen != 0)
         {
             TextManager.Instance.ShowTextOverCharacter("Hay enemigos cerca");

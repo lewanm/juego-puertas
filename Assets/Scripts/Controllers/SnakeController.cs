@@ -15,6 +15,7 @@ public class SnakeController : MonoBehaviour
 
     [SerializeField] float atkCD = 0.5f;
     [SerializeField] float range = 2f;
+    [SerializeField] float detectionRange = 7f;
 
     Rigidbody2D rb;
     Animator anim;
@@ -23,10 +24,9 @@ public class SnakeController : MonoBehaviour
     public Vector3 attackOffset;
     public float attackRange = 1f;
 
-    bool atkOnCD = false;
+
     bool canMove = true;
     bool canAttack = true;
-    bool isMoving = false;
     bool isFlipped = false;
 
 
@@ -67,7 +67,7 @@ public class SnakeController : MonoBehaviour
         Vector2 newPosition = Vector2.MoveTowards(rb.position, initialPosition, 5f * Time.fixedDeltaTime);
 
         float playerToEnemyDistance = Vector3.Distance(player.position, transform.position);
-        if (playerToEnemyDistance < 7f)
+        if (playerToEnemyDistance < detectionRange)
         {
             anim.SetBool("isMoving", true);
         }
@@ -131,9 +131,7 @@ public class SnakeController : MonoBehaviour
     private void OnDrawGizmos()
     {
 
-
-
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
 }

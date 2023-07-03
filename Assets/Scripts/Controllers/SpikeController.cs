@@ -15,7 +15,7 @@ public class SpikeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBetween(7, 11))
+        if (isBetween(8, 11))
         {
             spikeHitbox.gameObject.SetActive(true);
 

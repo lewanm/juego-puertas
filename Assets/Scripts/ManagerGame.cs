@@ -8,6 +8,11 @@ public class ManagerGame : MonoBehaviour
 
     [SerializeField] IntReference killCount;
     [SerializeField] GameObject spikes;
+    [SerializeField] GameObject devMenu;
+    [SerializeField] GameObject[] hitBoxesPrefabs;
+
+    bool devMenuIsOpen = false;
+
 
     public static ManagerGame Instance { get; private set; }
 
@@ -22,28 +27,39 @@ public class ManagerGame : MonoBehaviour
             Instance = this;
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            devMenuIsOpen = !devMenuIsOpen;
+            devMenu.SetActive(devMenuIsOpen);
+        }
+    }
 
     private void Start()
     {
         killCount.Value = 0;
         spikes.SetActive(true);
+        devMenu.SetActive(false);
+        ShowAllHitboxes(false);
 
     }
 
     public void SumKillCount()
     {
-        
         killCount.Value++;
-        print(killCount.Value);
     }
 
-    public void TurnOnSpikes()
+    public void SwitchSpikesState(bool state)
     {
-        spikes.SetActive(true);
+        spikes.SetActive(state);
     }
 
-    public void TurnOffSpikes()
+    public void ShowAllHitboxes(bool state)
     {
-        spikes.SetActive(false); 
+        foreach (var prefab in hitBoxesPrefabs)
+        {
+            prefab.GetComponent<SpriteRenderer>().enabled = state;
+        }
     }
 }
