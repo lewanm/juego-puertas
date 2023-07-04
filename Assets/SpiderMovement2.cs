@@ -54,11 +54,12 @@ public class SpiderMovement2 : MonoBehaviour
 
     void Attack()
     {
-        randomNumber = Random.Range(2, 5);
-
         timer = -2;
-        if(Random.Range(0,10) > 7) StartCoroutine(StartFirstAttack());
+        int anotherRandomNumber = Random.Range(0, 11);
+        Debug.Log(anotherRandomNumber);
+        if (anotherRandomNumber < 8) StartCoroutine(StartFirstAttack());
         else StartCoroutine(StartSecondtAttack());
+        randomNumber = Random.Range(2, 5);
     }
 
     void SpawnSnakes()
