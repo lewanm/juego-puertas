@@ -8,6 +8,7 @@ public class ManagerGame : MonoBehaviour
 
     [SerializeField] IntReference killCount;
     [SerializeField] GameObject spikes;
+    [SerializeField] GameObject spider;
     [SerializeField] GameObject devMenu;
     [SerializeField] GameObject[] hitBoxesPrefabs;
 
@@ -53,6 +54,11 @@ public class ManagerGame : MonoBehaviour
     public void SwitchSpikesState(bool state)
     {
         spikes.SetActive(state);
+    }
+
+    public void SpawnBoss(bool state)
+    {
+        spider.SetActive(state);
     }
 
     public void ShowAllHitboxes(bool state)

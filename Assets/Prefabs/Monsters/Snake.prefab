@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 503909171484632068}
   m_Layer: 0
   m_Name: Snake
-  m_TagString: Enemy
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,12 +105,11 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 3167160b53f791147bad3922140016eb, type: 2}
-  player: {fileID: 0}
   hitbox: {fileID: 8499680694891438566, guid: 55e8d6279b56c424db5a6708ced51df5, type: 3}
   attackSound: {fileID: 8300000, guid: 1f00f4de42203264bbe1f4632a67040f, type: 3}
   atkCD: 0.5
   range: 7
-  detectionRange: 7
+  detectionRange: 13
   attackOffset: {x: 0, y: 0, z: 0}
   attackRange: 1
 --- !u!61 &5653668752462169031
@@ -126,7 +125,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08512664, y: -0.3473177}
+  m_Offset: {x: -0.063011035, y: -0.3473177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -137,7 +136,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6422467, y: 0.21161461}
+  m_Size: {x: 0.5949651, y: 0.21161461}
   m_EdgeRadius: 0
 --- !u!95 &5660863907729384611
 Animator:
@@ -200,3 +199,5 @@ MonoBehaviour:
   hp: 0
   DropItem: {fileID: 0}
   damagedSound: {fileID: 8300000, guid: a97774ee5fe9a304b89f89ab6035acdf, type: 3}
+  bossRoom: {fileID: 0}
+  spiderContainer: {fileID: 0}

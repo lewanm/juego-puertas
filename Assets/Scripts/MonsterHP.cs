@@ -10,6 +10,9 @@ public class MonsterHP : MonoBehaviour
     [SerializeField] int hp;
     [SerializeField] GameObject DropItem;
     [SerializeField] AudioClip damagedSound;
+    [SerializeField] GameObject bossRoom;
+    [SerializeField] GameObject spiderContainer;
+
 
     private Animator animator;
     private void Start()
@@ -57,8 +60,11 @@ public class MonsterHP : MonoBehaviour
         if(DropItem != null) Instantiate(DropItem, transform.position, Quaternion.identity);
 
         ManagerGame.Instance.SumKillCount();
+        if(bossRoom!= null) Destroy(bossRoom);
+        if(spiderContainer != null) Destroy(spiderContainer);
         Destroy(gameObject);
     }
+
 
 
 

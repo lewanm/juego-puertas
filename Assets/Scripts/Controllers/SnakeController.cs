@@ -10,7 +10,7 @@ public class SnakeController : MonoBehaviour
 {
 
     [SerializeField] FloatReference playerY; //este esta al pedo ya que tengo todo abajo
-    [SerializeField] Transform player;
+    Transform player;
     [SerializeField] GameObject hitbox;
 
     [SerializeField] AudioClip attackSound;
@@ -41,6 +41,7 @@ public class SnakeController : MonoBehaviour
         anim = GetComponent<Animator>();
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

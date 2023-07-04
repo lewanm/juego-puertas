@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Min(3)] int initialHP;
     [SerializeField] IntReference playerHP;
     [SerializeField] FloatReference playerY;
-    [SerializeField, Range(2,6)] float speed;
+    [SerializeField, Range(2, 6)] float speed;
+    [SerializeField] float slowMultiplier;
 
     [Header("Dev")] //Variables privadas pero que se muestran en el inspector para mas facil acceso.
     [SerializeField] bool hasWeapon = false;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isDark = false;
     [SerializeField] bool hasTorch = false;
     [SerializeField] bool startFromStartPosition = false;
+    bool isSlowed = false;
     [SerializeField] GameObject swordHitbox;
 
     [Header("Sounds")]
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip playerDamaged;
     [SerializeField] AudioClip walkSound;
 
-
+    [SerializeField] GameObject spiderweb;
 
     bool atkOnCD = false;
     Transform mascara;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Direction", 2f);
         swordTarget = transform.position + new Vector3(0f, -0.8f, 0);
         mascara = transform.GetChild(0);
-        startPosition = new Vector3(0,-3,0);
+        startPosition = new Vector3(0, -3, 0);
 
         if (startFromStartPosition) transform.position = startPosition;
 
@@ -67,9 +69,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             StartAttackAnimation();
-            
+
         }
         CheckLight();
+
+    }
+    public void StartGetSlowed()
+    {
+        StartCoroutine(GetSlowed());
+    }
+
+    IEnumerator GetSlowed()
+    {
+        GameObject spiderwebGO = Instantiate(spiderweb, transform.position, Quaternion.identity);
+        isSlowed = true;
+        atkOnCD = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        yield return new WaitForSeconds(1.5f);
+        isSlowed = false;
+        atkOnCD = false;
+        Destroy(spiderwebGO);
     }
 
     void StartAttackAnimation()
@@ -172,7 +191,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isMoving", dir.magnitude > 0);
         //SoundManager.Instance.PlaySound(walkSound);
 
-        GetComponent<Rigidbody2D>().velocity = speed * dir;
+        float updatedSpeed = isSlowed ? speed * slowMultiplier : speed;
+
+        GetComponent<Rigidbody2D>().velocity = updatedSpeed * dir;
     }
 
     bool PressedActionButton()

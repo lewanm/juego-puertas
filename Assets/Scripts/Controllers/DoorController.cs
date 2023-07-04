@@ -12,7 +12,8 @@ public class DoorController : MonoBehaviour
     [SerializeField] int killedEnemiesToBeOpen;
     [SerializeField] IntReference killCount;
     [SerializeField] bool nextRoomIsDark;
-    [SerializeField] bool nextRoomHaveTraps;
+    [SerializeField] bool nextRoomHasTraps;
+    [SerializeField] bool nextRoomHasBoss;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,7 +50,8 @@ public class DoorController : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = doorActived;
         SoundManager.Instance.PlaySound(openDoor);
 
-        ManagerGame.Instance.SwitchSpikesState(nextRoomHaveTraps);
+        ManagerGame.Instance.SwitchSpikesState(nextRoomHasTraps);
+        ManagerGame.Instance.SpawnBoss(nextRoomHasBoss);
     }
 
     public void Action(GameObject player)

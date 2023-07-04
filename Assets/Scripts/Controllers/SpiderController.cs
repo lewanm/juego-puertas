@@ -1,18 +1,20 @@
+using Puertas.Variables;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class SpiderController : MonoBehaviour
 {
     float timer;
     Animator animator;
     [SerializeField] GameObject hitbox;
+    Transform player;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -56,5 +58,10 @@ public class SpiderController : MonoBehaviour
     public void Attack2()
     {
 
+    }
+
+    public void SlowEnemy()
+    {
+        player.GetComponent<PlayerController>().StartGetSlowed();
     }
 }
