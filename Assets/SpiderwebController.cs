@@ -7,6 +7,9 @@ public class SpiderwebController : MonoBehaviour
     // Start is called before the first frame update
 
     Animator anim;
+    [SerializeField] AudioClip burningSound;
+
+    bool burned = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -26,6 +29,10 @@ public class SpiderwebController : MonoBehaviour
             return;
         }
 
+        if (burned)  return;
+
+        burned = true;
+        SoundManager.Instance.PlaySound(burningSound);
         StartCoroutine(BurnAnimation());
         
     }
@@ -33,6 +40,7 @@ public class SpiderwebController : MonoBehaviour
     IEnumerator BurnAnimation()
     {
         anim.SetTrigger("Burn");
+        
         yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);
 

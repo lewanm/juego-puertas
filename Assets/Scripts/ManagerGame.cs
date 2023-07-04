@@ -39,9 +39,9 @@ public class ManagerGame : MonoBehaviour
     private void Start()
     {
         killCount.Value = 0;
-        spikes.SetActive(true);
+        spikes.SetActive(false);
         devMenu.SetActive(false);
-        ShowAllHitboxes(false);
+        //ShowAllHitboxes(false);
 
     }
 

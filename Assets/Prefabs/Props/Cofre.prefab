@@ -153,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   chestHovered: {fileID: 352068746, guid: a10ae7798b2937342b2ec6c909d2227e, type: 3}
+  openChestSound: {fileID: 8300000, guid: 1c484c9e4b5c0314089f65c174a530db, type: 3}

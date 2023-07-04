@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class SpiderController : MonoBehaviour
 {
     float timer;
+    Animator animator;
+    [SerializeField] GameObject hitbox;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
+        animator = GetComponent<Animator>();    
     }
 
     // Update is called once per frame
@@ -21,7 +25,18 @@ public class SpiderController : MonoBehaviour
     {
         if (timer > RandomSecondsBetween(3,6))
         {
-            timer = -10;
+            Attack1();
+            timer = -5;
+            /*
+            if (Random.Range(0, 1) == 1)
+            {
+                animator.SetTrigger("Attack1");
+            }
+            else
+            {
+                Attack2();
+            }
+            */
         }
     }
 
@@ -33,7 +48,9 @@ public class SpiderController : MonoBehaviour
     //Hacer que no se pueda mover fuera de los bordes
     public void Attack1()
     {
-
+        Vector2 targetPost = transform.position + Vector3.down * 2.2f;
+        GameObject go = Instantiate(hitbox, targetPost, Quaternion.identity);
+        Destroy(go, 0.35f);
     }
 
     public void Attack2()

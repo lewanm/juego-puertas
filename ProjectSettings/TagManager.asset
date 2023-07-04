@@ -16,6 +16,7 @@ TagManager:
   - Traps
   - spiderweb
   - fireplace
+  - testing
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Monster
   - GODMOD
   - Trap
-  - 
+  - endGame
   - 
   - 
   - 

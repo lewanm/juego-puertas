@@ -8,6 +8,7 @@ public class Exit : MonoBehaviour
 
     [SerializeField] Sprite imagen1;
     [SerializeField] Sprite imagen2;
+    [SerializeField] AudioClip hoverSound, clickSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Exit : MonoBehaviour
     public void mouseOn()
     {
         GetComponent<Image>().sprite = imagen2;
+        SoundManager.Instance.PlaySound(hoverSound);
     }
 
     public void mouseOff()
@@ -32,6 +34,7 @@ public class Exit : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.Instance.PlaySound(clickSound);
         Application.Quit();
     }
 }

@@ -107,8 +107,10 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 3167160b53f791147bad3922140016eb, type: 2}
   player: {fileID: 0}
   hitbox: {fileID: 8499680694891438566, guid: 55e8d6279b56c424db5a6708ced51df5, type: 3}
+  attackSound: {fileID: 8300000, guid: 1f00f4de42203264bbe1f4632a67040f, type: 3}
   atkCD: 0.5
   range: 7
+  detectionRange: 7
   attackOffset: {x: 0, y: 0, z: 0}
   attackRange: 1
 --- !u!61 &5653668752462169031
@@ -197,3 +199,4 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: d9efdf1942fa8f34789de4c87e66bfdb, type: 2}
   hp: 0
   DropItem: {fileID: 0}
+  damagedSound: {fileID: 8300000, guid: a97774ee5fe9a304b89f89ab6035acdf, type: 3}

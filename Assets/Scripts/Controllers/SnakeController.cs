@@ -13,6 +13,8 @@ public class SnakeController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] GameObject hitbox;
 
+    [SerializeField] AudioClip attackSound;
+
     [SerializeField] float atkCD = 0.5f;
     [SerializeField] float range = 2f;
     [SerializeField] float detectionRange = 7f;
@@ -106,13 +108,14 @@ public class SnakeController : MonoBehaviour
         }
         else pos += new Vector3(-1, 0, 0);
 
-
+        SoundManager.Instance.PlaySound(attackSound);
         GameObject go = Instantiate(hitbox, pos, Quaternion.identity);
         Destroy(go, 0.2f);
     }
 
     public void getDamage()
     {
+        
         StartCoroutine(StopMovement());
     }
 
@@ -120,7 +123,7 @@ public class SnakeController : MonoBehaviour
     {
         canAttack = false;
         canMove = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canAttack = true;
         canMove = true;
 

@@ -9,12 +9,12 @@ public class ItemsController : MonoBehaviour
     [SerializeField] AudioClip pickSwordSound, pickItemSound;
     public void Action(GameObject player)
     {
-        if(itemName == "Key")
+        if (itemName == "Key")
         {
             player.GetComponent<PlayerController>().GetKey();
             SoundManager.Instance.PlaySound(pickItemSound);
         }
-        if(itemName == "Weapon")
+        if (itemName == "Weapon")
         {
             player.GetComponent<PlayerController>().GetWeapon();
             SoundManager.Instance.PlaySound(pickSwordSound);

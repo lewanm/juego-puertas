@@ -9,6 +9,7 @@ public class MonsterHP : MonoBehaviour
     [SerializeField] IntReference initialHp;
     [SerializeField] int hp;
     [SerializeField] GameObject DropItem;
+    [SerializeField] AudioClip damagedSound;
 
     private Animator animator;
     private void Start()
@@ -31,10 +32,11 @@ public class MonsterHP : MonoBehaviour
     {
         
         animator.SetTrigger("Damaged");
+        SoundManager.Instance.PlaySound(damagedSound);
 
         switch (gameObject.name)
         {
-            case "Sname":
+            case "Snake":
                 GetComponent<SnakeController>().getDamage();
                 break;
         }

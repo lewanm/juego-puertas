@@ -37,4 +37,10 @@ public class SpikeController : MonoBehaviour
 
         return isBetween;
     }
+
+    public void PlaySpikeSound(AudioClip spikeSound)
+    {
+        if (spikeHitbox != null) SoundManager.Instance.PlaySound(spikeSound);
+    }
+
 }

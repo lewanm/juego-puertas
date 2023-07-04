@@ -6,24 +6,27 @@ using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour
 {
-    [SerializeField] Sprite imagen1;
-    [SerializeField] Sprite imagen2;
+    [SerializeField] Sprite imagen1, imagen2;
     [SerializeField] int sceneToLoad;
+    [SerializeField] AudioClip hoverSound, clickSound;
+
+    GameObject destroyOnLoad;
     // Start is called before the first frame update
     void Start()
     {
-        
+        destroyOnLoad = GameObject.FindGameObjectWithTag("testing");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void mouseOn()
     {
         GetComponent<Image>().sprite = imagen2;
+        if(hoverSound != null) SoundManager.Instance.PlaySound(hoverSound);
     }
 
     public void mouseOff()
@@ -33,6 +36,8 @@ public class MenuButton : MonoBehaviour
 
     public void ChangeEscene()
     {
+        if(clickSound!= null) SoundManager.Instance.PlaySound(clickSound);
+        if(destroyOnLoad != null) Destroy(destroyOnLoad);
         SceneManager.LoadScene(sceneToLoad);
     }
 }

@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip playerDamaged;
+    [SerializeField] AudioClip walkSound;
 
-    
+
+
     bool atkOnCD = false;
     Transform mascara;
     Vector3 startPosition;
@@ -167,6 +170,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", dir.y);
         dir.Normalize();
         animator.SetBool("isMoving", dir.magnitude > 0);
+        //SoundManager.Instance.PlaySound(walkSound);
 
         GetComponent<Rigidbody2D>().velocity = speed * dir;
     }
@@ -233,7 +237,8 @@ public class PlayerController : MonoBehaviour
         
         invincible = true;
         animator.SetTrigger("Damaged");
-        yield return new WaitForSeconds(1);
+        SoundManager.Instance.PlaySound(playerDamaged);
+        yield return new WaitForSeconds(0.6f);
         invincible = false;
     }
 
@@ -262,11 +267,16 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public void GetItem(GameObject item)
+    public void GetItem(ItemSO item)
     {
-        string itemName = item.GetComponent<ItemsController>().itemName;
+        //string itemName = item.GetComponent<ItemsController>().itemName;
+        //AudioClip itemSound  = item.GetComponent<AudioClip>();
+        string itemName = item.itemName;
+        AudioClip itemSound = item.itemSound;
+        GameObject itemPrefab = item.itemPrefab;
 
-        if (itemName == "Weapon")
+
+        if (itemName == "Sword")
         {
             hasWeapon = true;
         }
@@ -285,17 +295,20 @@ public class PlayerController : MonoBehaviour
         {
             playerHP.Value = initialHP;
         }
-        StartCoroutine(AnimationGetItem(item));
+        StartCoroutine(AnimationGetItem(itemPrefab, itemSound));
     }
 
-    IEnumerator AnimationGetItem(GameObject item)
+    IEnumerator AnimationGetItem(GameObject item, AudioClip itemSound)
     {
-        atkOnCD = true;
-        SoundManager.Instance.PlaySound(attackSound);
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        atkOnCD = true;
+
         animator.SetTrigger("GetItem");
         GameObject go = Instantiate(item, transform.position + Vector3.up, Quaternion.identity);
-        yield return new WaitForSeconds(atkCD); // este mismo tiempo tiene que tener la transicion de la animacion getItem
+        SoundManager.Instance.PlaySound(itemSound);
+
+        yield return new WaitForSeconds(0.5f);
+
         Destroy(go);
 
         atkOnCD = false;
